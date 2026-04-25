@@ -1,0 +1,13 @@
+{
+  "name": "hermes-lancedb-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@lancedb/lancedb": "^0.18.2"
+  },
+  "scripts": {
+    "check": "node --check plugins/hermes_lancedb/lancedb_bridge.mjs"
+  }
+}
+

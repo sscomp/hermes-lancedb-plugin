@@ -1,0 +1,4 @@
+name: hermes_lancedb
+version: 0.1.0
+description: "Hermes-native LanceDB long-term memory provider."
+

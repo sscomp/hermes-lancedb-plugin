@@ -1,0 +1,61 @@
+# hermes-lancedb-plugin
+
+Hermes 原生的 LanceDB 長期記憶 plugin。
+
+這個 repo 的定位，是把先前 `openclaw_lancedb` 裡可重用的長期記憶能力，整理成一個正式的 Hermes memory provider plugin，讓 Hermes profile 可以直接安裝與啟用，不再綁定 OpenClaw migration adapter 的語意。
+
+如果你要在新的 Hermes 機器上建立長期長效記憶，這個 repo 就是正式安裝件；它不是 skill，而是 plugin，更精確地說是 memory provider plugin。
+
+## 目前定位
+
+這一版是新的獨立起點：
+
+- plugin 名稱：`hermes_lancedb`
+- 類型：Hermes memory provider plugin
+- 安裝目標：`<HERMES_HOME>/plugins/hermes_lancedb`
+
+它不是 skill。
+
+## 功能方向
+
+- 以 LanceDB 作為 Hermes 長期記憶存放層
+- 提供搜尋、重要記憶摘要、手動寫入
+- 支援 profile scope 隔離
+- 支援寫入治理規則，避免把閒聊噪音全塞進長期記憶
+
+## 安裝
+
+```bash
+git clone https://github.com/sscomp/hermes-lancedb-plugin.git
+cd hermes-lancedb-plugin
+npm install
+scripts/install-profile.sh <profile-name>
+```
+
+或明確指定 Hermes profile 路徑：
+
+```bash
+scripts/install-profile.sh coder /Users/your-name/.hermes/profiles/coder
+```
+
+## 安裝後需要做的事
+
+1. 在 `<PROFILE>/.env` 填入 LanceDB 路徑與 embedding 設定
+2. 確認 `<PROFILE>/config.yaml` 內的 `memory.provider` 為 `hermes_lancedb`
+3. 重啟 Hermes gateway
+4. 驗證 `hermes --profile <profile> memory status`
+
+## 重要檔案
+
+- [plugins/hermes_lancedb/plugin.yaml](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/plugin.yaml)
+- [plugins/hermes_lancedb/__init__.py](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/__init__.py)
+- [plugins/hermes_lancedb/lancedb_bridge.mjs](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/lancedb_bridge.mjs)
+- [examples/profile-env.example](/Users/sscomp/hermes-lancedb-plugin/examples/profile-env.example)
+- [scripts/install-profile.sh](/Users/sscomp/hermes-lancedb-plugin/scripts/install-profile.sh)
+
+## 與 `openclaw_lancedb` 的關係
+
+建議未來角色分工如下：
+
+- `openclaw_lancedb`：OpenClaw 遷移相容 adapter
+- `hermes_lancedb`：Hermes 正式長期記憶 plugin

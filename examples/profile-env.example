@@ -1,0 +1,20 @@
+# Required: path to the LanceDB database directory.
+HERMES_LANCEDB_DB_PATH=/path/to/your/lancedb
+HERMES_LANCEDB_TABLE_NAME=memories
+
+# Node and LanceDB runtime.
+HERMES_LANCEDB_NODE_BIN=/opt/homebrew/bin/node
+HERMES_LANCEDB_LANCEDB_MODULE=/absolute/path/to/hermes-lancedb-plugin/node_modules/@lancedb/lancedb/dist/index.js
+
+# Embeddings for new writes.
+HERMES_LANCEDB_EMBEDDING_BASE_URL=http://127.0.0.1:11434/v1
+HERMES_LANCEDB_EMBEDDING_MODEL=mxbai-embed-large:latest
+HERMES_LANCEDB_EMBEDDING_API_KEY=ollama-local
+
+# Scope mapping. The key is the Hermes profile name.
+HERMES_LANCEDB_GLOBAL_SCOPE=global
+HERMES_LANCEDB_SCOPE_MAP={"coder":"agent:coder"}
+
+# Optional governance tuning.
+HERMES_LANCEDB_DECAY_HALF_LIFE_DAYS=180
+
