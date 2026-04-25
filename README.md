@@ -75,6 +75,11 @@ hermes --profile <profile-name> memory status
 
 如果之後要再搭配 NotebookLM 與 Codex dispatch 一起搬機，建議改看可攜式 bootstrap repo 來整體安裝，而不是逐套手動裝。
 
+## Release
+
+- Current release line: `0.1.1`
+- Release notes: [docs/release-0.1.1.md](/Users/sscomp/lancedb-pro-hermes-plugin/docs/release-0.1.1.md)
+
 ## 重要檔案
 
 - [plugins/hermes_lancedb/plugin.yaml](/Users/sscomp/lancedb-pro-hermes-plugin/plugins/hermes_lancedb/plugin.yaml)
