@@ -45,6 +45,36 @@ scripts/install-profile.sh coder /Users/your-name/.hermes/profiles/coder
 3. 重啟 Hermes gateway
 4. 驗證 `hermes --profile <profile> memory status`
 
+## 中文快速安裝
+
+如果是在一台新的 Hermes 機器上安裝，建議照這個順序：
+
+1. 先準備好 Hermes profile
+2. `git clone` 這個 repo
+3. 在 repo 目錄執行 `npm install`
+4. 執行：
+
+```bash
+scripts/install-profile.sh <profile-name>
+```
+
+5. 參考 [examples/profile-env.example](/Users/sscomp/hermes-lancedb-plugin/examples/profile-env.example) 把需要的設定填進 `<PROFILE>/.env`
+6. 確認 `<PROFILE>/config.yaml` 內已有：
+
+```yaml
+memory:
+  provider: hermes_lancedb
+```
+
+7. 重啟 Hermes gateway
+8. 驗證：
+
+```bash
+hermes --profile <profile-name> memory status
+```
+
+如果之後要再搭配 NotebookLM 與 Codex dispatch 一起搬機，建議改看可攜式 bootstrap repo 來整體安裝，而不是逐套手動裝。
+
 ## 重要檔案
 
 - [plugins/hermes_lancedb/plugin.yaml](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/plugin.yaml)
