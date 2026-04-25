@@ -1,4 +1,4 @@
-# hermes-lancedb-plugin
+# lancedb-pro-hermes-plugin
 
 Hermes 原生的 LanceDB 長期記憶 plugin。
 
@@ -26,8 +26,8 @@ Hermes 原生的 LanceDB 長期記憶 plugin。
 ## 安裝
 
 ```bash
-git clone https://github.com/sscomp/hermes-lancedb-plugin.git
-cd hermes-lancedb-plugin
+git clone https://github.com/sscomp/lancedb-pro-hermes-plugin.git
+cd lancedb-pro-hermes-plugin
 npm install
 scripts/install-profile.sh <profile-name>
 ```
@@ -58,7 +58,7 @@ scripts/install-profile.sh coder /Users/your-name/.hermes/profiles/coder
 scripts/install-profile.sh <profile-name>
 ```
 
-5. 參考 [examples/profile-env.example](/Users/sscomp/hermes-lancedb-plugin/examples/profile-env.example) 把需要的設定填進 `<PROFILE>/.env`
+5. 參考 [examples/profile-env.example](/Users/sscomp/lancedb-pro-hermes-plugin/examples/profile-env.example) 把需要的設定填進 `<PROFILE>/.env`
 6. 確認 `<PROFILE>/config.yaml` 內已有：
 
 ```yaml
@@ -77,11 +77,11 @@ hermes --profile <profile-name> memory status
 
 ## 重要檔案
 
-- [plugins/hermes_lancedb/plugin.yaml](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/plugin.yaml)
-- [plugins/hermes_lancedb/__init__.py](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/__init__.py)
-- [plugins/hermes_lancedb/lancedb_bridge.mjs](/Users/sscomp/hermes-lancedb-plugin/plugins/hermes_lancedb/lancedb_bridge.mjs)
-- [examples/profile-env.example](/Users/sscomp/hermes-lancedb-plugin/examples/profile-env.example)
-- [scripts/install-profile.sh](/Users/sscomp/hermes-lancedb-plugin/scripts/install-profile.sh)
+- [plugins/hermes_lancedb/plugin.yaml](/Users/sscomp/lancedb-pro-hermes-plugin/plugins/hermes_lancedb/plugin.yaml)
+- [plugins/hermes_lancedb/__init__.py](/Users/sscomp/lancedb-pro-hermes-plugin/plugins/hermes_lancedb/__init__.py)
+- [plugins/hermes_lancedb/lancedb_bridge.mjs](/Users/sscomp/lancedb-pro-hermes-plugin/plugins/hermes_lancedb/lancedb_bridge.mjs)
+- [examples/profile-env.example](/Users/sscomp/lancedb-pro-hermes-plugin/examples/profile-env.example)
+- [scripts/install-profile.sh](/Users/sscomp/lancedb-pro-hermes-plugin/scripts/install-profile.sh)
 
 ## 與 `openclaw_lancedb` 的關係
 

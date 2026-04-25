@@ -1,5 +1,5 @@
 {
-  "name": "hermes-lancedb-plugin",
+  "name": "lancedb-pro-hermes-plugin",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,4 +10,3 @@
     "check": "node --check plugins/hermes_lancedb/lancedb_bridge.mjs"
   }
 }
-

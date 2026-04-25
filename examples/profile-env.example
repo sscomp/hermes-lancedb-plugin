@@ -4,7 +4,7 @@ HERMES_LANCEDB_TABLE_NAME=memories
 
 # Node and LanceDB runtime.
 HERMES_LANCEDB_NODE_BIN=/opt/homebrew/bin/node
-HERMES_LANCEDB_LANCEDB_MODULE=/absolute/path/to/hermes-lancedb-plugin/node_modules/@lancedb/lancedb/dist/index.js
+HERMES_LANCEDB_LANCEDB_MODULE=/absolute/path/to/lancedb-pro-hermes-plugin/node_modules/@lancedb/lancedb/dist/index.js
 
 # Embeddings for new writes.
 HERMES_LANCEDB_EMBEDDING_BASE_URL=http://127.0.0.1:11434/v1
@@ -17,4 +17,3 @@ HERMES_LANCEDB_SCOPE_MAP={"coder":"agent:coder"}
 
 # Optional governance tuning.
 HERMES_LANCEDB_DECAY_HALF_LIFE_DAYS=180
-

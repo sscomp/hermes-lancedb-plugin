@@ -79,6 +79,12 @@ function accessBoost(row) {
   return Math.log1p(Number(metadata.access_count || 0)) * 0.25;
 }
 
+function normalizeTimestamp(value, fallback) {
+  const parsed = Number(value);
+  if (Number.isFinite(parsed) && parsed > 0) return parsed;
+  return fallback;
+}
+
 function governedScore(rawScore, row) {
   const importance = Number(row.importance || 0);
   return Number(rawScore || 0) * decayFactor(row) + importance * 0.5 + accessBoost(row);
@@ -245,27 +251,30 @@ async function add(args) {
   if (!content) throw new Error("content is required");
   const vector = await embed(content);
   const now = Date.now();
+  const timestamp = normalizeTimestamp(args.timestamp, now);
+  const preservedMetadata = parseMetadata(args.metadata);
   const metadata = {
+    ...preservedMetadata,
     l0_abstract: content.slice(0, 240),
     l1_overview: content,
     l2_content: content,
     memory_category: args.category || "fact",
-    tier: "hermes-direct",
-    source_session: args.sessionId || "",
-    source: args.source || "hermes",
-    valid_from: now,
-    last_accessed_at: now,
-    access_count: 0,
+    tier: preservedMetadata.tier || "hermes-direct",
+    source_session: args.sessionId || preservedMetadata.source_session || "",
+    source: args.source || preservedMetadata.source || "hermes",
+    valid_from: normalizeTimestamp(args.validFrom ?? preservedMetadata.valid_from, timestamp),
+    last_accessed_at: normalizeTimestamp(preservedMetadata.last_accessed_at, timestamp),
+    access_count: Number(preservedMetadata.access_count || 0),
     confidence: Number(args.importance || 0.7),
   };
   const record = {
-    id: randomUUID(),
+    id: String(args.id || randomUUID()),
     text: content,
     vector,
     category: args.category || "fact",
     scope: args.scope || "global",
     importance: Number(args.importance || 0.7),
-    timestamp: now,
+    timestamp,
     metadata: JSON.stringify(metadata),
   };
   const t = await table();
